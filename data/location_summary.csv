@@ -1,0 +1,9 @@
+Location,Country,PM2_5_mean,PM2_5_max,AQI_mean,WHO_Exceed_pct,Pollution_Index,PM25_WHO_Multi,Readings,Latitude,Longitude
+Bengaluru,India,32.476,76.0,67.81,0.905,0.11,2.165,21,12.9716,77.5946
+"Biratnagar, Nepal",Nepal,60.944,112.46,143.2,1.0,0.177,4.062,10,26.4525,87.2718
+"Dimapur, Nagaland",India,42.0,53.0,83.0,1.0,0.101,2.8,2,25.9044,93.7271
+"ITO, Delhi",India,342.9,500.0,319.0,1.0,0.638,22.86,10,28.628,77.241
+"Knowledge park, Greater Noida",India,225.348,409.0,218.0,1.0,0.441,15.023,23,28.4744,77.504
+Mumbai,India,162.529,343.0,146.036,0.964,0.33,10.835,28,19.076,72.8777
+"New Ind Town, Faridabad",India,185.0,185.0,230.0,1.0,0.378,12.33,1,28.4089,77.3178
+Tamil Nadu,India,54.65,111.0,92.85,0.95,0.176,3.644,20,13.0827,80.2707

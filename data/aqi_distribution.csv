@@ -1,0 +1,27 @@
+Location,AQI_Class,Count,Pct
+Bengaluru,Good,622,32.3
+Bengaluru,Moderate,962,49.9
+Bengaluru,Unhealthy for Sensitive Groups,342,17.8
+"Biratnagar, Nepal",Moderate,284,13.1
+"Biratnagar, Nepal",Unhealthy,1153,53.1
+"Biratnagar, Nepal",Unhealthy for Sensitive Groups,734,33.8
+"Dimapur, Nagaland",Moderate,122,34.9
+"Dimapur, Nagaland",Unhealthy for Sensitive Groups,228,65.1
+"ITO, Delhi",Severe,1059,48.8
+"ITO, Delhi",Unhealthy,123,5.7
+"ITO, Delhi",Very Unhealthy,986,45.5
+"Knowledge park, Greater Noida",Moderate,3,0.2
+"Knowledge park, Greater Noida",Severe,388,31.3
+"Knowledge park, Greater Noida",Unhealthy,132,10.6
+"Knowledge park, Greater Noida",Unhealthy for Sensitive Groups,415,33.4
+"Knowledge park, Greater Noida",Very Unhealthy,303,24.4
+Mumbai,Good,252,11.4
+Mumbai,Moderate,87,3.9
+Mumbai,Unhealthy,951,43.2
+Mumbai,Unhealthy for Sensitive Groups,649,29.5
+Mumbai,Very Unhealthy,264,12.0
+"New Ind Town, Faridabad",Very Unhealthy,641,100.0
+Tamil Nadu,Good,667,43.3
+Tamil Nadu,Moderate,115,7.5
+Tamil Nadu,Unhealthy,263,17.1
+Tamil Nadu,Unhealthy for Sensitive Groups,495,32.1

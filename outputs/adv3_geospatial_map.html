@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_96ef02dee55268712660bc8c84236538 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position:fixed;bottom:30px;left:30px;z-index:9999;
+            background:white;padding:12px;border-radius:8px;
+            border:1px solid #ccc;font-size:11px;font-family:Arial;">
+    <b>AQI Colour Scale</b><br>
+    <span style="background:#2ECC71;padding:2px 10px;border-radius:3px;">&nbsp;</span> Good (0–50)<br>
+    <span style="background:#F1C40F;padding:2px 10px;border-radius:3px;">&nbsp;</span> Moderate (51–100)<br>
+    <span style="background:#F39C12;padding:2px 10px;border-radius:3px;">&nbsp;</span> Unhealthy Sensitive (101–150)<br>
+    <span style="background:#E74C3C;padding:2px 10px;border-radius:3px;">&nbsp;</span> Unhealthy (151–200)<br>
+    <span style="background:#9B59B6;padding:2px 10px;border-radius:3px;">&nbsp;</span> Very Unhealthy (201–300)<br>
+    <span style="background:#641E16;color:white;padding:2px 10px;border-radius:3px;">&nbsp;</span> Severe (300+)<br>
+    <br><i>Circle size ∝ PM2.5 level<br>Click circles for details</i>
+</div>
+    
+<div style="position:fixed;top:10px;left:50%;transform:translateX(-50%);
+            z-index:9999;background:white;padding:8px 18px;border-radius:8px;
+            border:1px solid #ccc;font-family:Arial;font-size:13px;font-weight:bold;">
+    South Asia Air Quality — City-Level AQI Map (2022–2023)
+</div>
+    
+            <div class="folium-map" id="map_96ef02dee55268712660bc8c84236538" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_96ef02dee55268712660bc8c84236538 = L.map(
+                "map_96ef02dee55268712660bc8c84236538",
+                {
+                    center: [22.5, 82.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4fbb7b3349802932405531dbf8440a88 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_4fbb7b3349802932405531dbf8440a88.addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+            var circle_marker_368dca99cd640f18965b43666cc8b17b = L.circleMarker(
+                [12.9716, 77.5946],
+                {"bubblingMouseEvents": true, "color": "#F1C40F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F1C40F", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1.5}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+        var popup_c9f5d053a813ce67db36c5412a2b8000 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_e4bb46305c8dbe7b23e94cde77f494f0 = $(`<div id="html_e4bb46305c8dbe7b23e94cde77f494f0" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; width:220px; font-size:12px;">         <b style="font-size:13px;">Bengaluru</b><br>         <hr style="margin:4px 0;">         <b>Country:</b> India<br>         <b>Mean PM2.5:</b> 32.5 µg/m³             &nbsp;<span style="color:red">(2.2× WHO limit)</span><br>         <b>Mean AQI:</b> 68<br>         <b>WHO exceedance:</b> 90% of readings<br>         <b>Pollution Index:</b> 0.110     </div></div>`)[0];
+                popup_c9f5d053a813ce67db36c5412a2b8000.setContent(html_e4bb46305c8dbe7b23e94cde77f494f0);
+            
+        
+
+        circle_marker_368dca99cd640f18965b43666cc8b17b.bindPopup(popup_c9f5d053a813ce67db36c5412a2b8000)
+        ;
+
+        
+    
+    
+            circle_marker_368dca99cd640f18965b43666cc8b17b.bindTooltip(
+                `<div>
+                     Bengaluru: AQI 68
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ae2c9d6dd41b7b5ce3c36a8f87c22a0e = L.marker(
+                [13.3716, 77.5946],
+                {
+}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+            var div_icon_c0f3a814b127d28b722de04b7f068872 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px;font-weight:bold;color:#F1C40F;white-space:nowrap;\"\u003eBengaluru\u003c/div\u003e",
+  "iconSize": [150, 20],
+  "className": "empty",
+});
+        
+    
+                marker_ae2c9d6dd41b7b5ce3c36a8f87c22a0e.setIcon(div_icon_c0f3a814b127d28b722de04b7f068872);
+            
+    
+            var circle_marker_f165186f76448f4fb22dd53ea19c9bc0 = L.circleMarker(
+                [26.4525, 87.2718],
+                {"bubblingMouseEvents": true, "color": "#F39C12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F39C12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.1888, "stroke": true, "weight": 1.5}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+        var popup_47aadb71a3bc33bbf31df69512be7b8e = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_673daf072a4b065137bd11e5ece43f2e = $(`<div id="html_673daf072a4b065137bd11e5ece43f2e" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; width:220px; font-size:12px;">         <b style="font-size:13px;">Biratnagar, Nepal</b><br>         <hr style="margin:4px 0;">         <b>Country:</b> Nepal<br>         <b>Mean PM2.5:</b> 60.9 µg/m³             &nbsp;<span style="color:red">(4.1× WHO limit)</span><br>         <b>Mean AQI:</b> 143<br>         <b>WHO exceedance:</b> 100% of readings<br>         <b>Pollution Index:</b> 0.177     </div></div>`)[0];
+                popup_47aadb71a3bc33bbf31df69512be7b8e.setContent(html_673daf072a4b065137bd11e5ece43f2e);
+            
+        
+
+        circle_marker_f165186f76448f4fb22dd53ea19c9bc0.bindPopup(popup_47aadb71a3bc33bbf31df69512be7b8e)
+        ;
+
+        
+    
+    
+            circle_marker_f165186f76448f4fb22dd53ea19c9bc0.bindTooltip(
+                `<div>
+                     Biratnagar, Nepal: AQI 143
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_201aac53d9d8c1e891ddc24ba2d1ceaa = L.marker(
+                [26.8525, 87.2718],
+                {
+}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+            var div_icon_4ef527bfc6280c9e006d606d5e07ee10 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px;font-weight:bold;color:#F39C12;white-space:nowrap;\"\u003eBiratnagar\u003c/div\u003e",
+  "iconSize": [150, 20],
+  "className": "empty",
+});
+        
+    
+                marker_201aac53d9d8c1e891ddc24ba2d1ceaa.setIcon(div_icon_4ef527bfc6280c9e006d606d5e07ee10);
+            
+    
+            var circle_marker_122ac63a334e80c4703dd592b49b08e8 = L.circleMarker(
+                [25.9044, 93.7271],
+                {"bubblingMouseEvents": true, "color": "#F1C40F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F1C40F", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1.5}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+        var popup_9fec1e2102cbf799047eea6518970f51 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_6b17026aee6ab0ab8f370936a319a911 = $(`<div id="html_6b17026aee6ab0ab8f370936a319a911" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; width:220px; font-size:12px;">         <b style="font-size:13px;">Dimapur, Nagaland</b><br>         <hr style="margin:4px 0;">         <b>Country:</b> India<br>         <b>Mean PM2.5:</b> 42.0 µg/m³             &nbsp;<span style="color:red">(2.8× WHO limit)</span><br>         <b>Mean AQI:</b> 83<br>         <b>WHO exceedance:</b> 100% of readings<br>         <b>Pollution Index:</b> 0.101     </div></div>`)[0];
+                popup_9fec1e2102cbf799047eea6518970f51.setContent(html_6b17026aee6ab0ab8f370936a319a911);
+            
+        
+
+        circle_marker_122ac63a334e80c4703dd592b49b08e8.bindPopup(popup_9fec1e2102cbf799047eea6518970f51)
+        ;
+
+        
+    
+    
+            circle_marker_122ac63a334e80c4703dd592b49b08e8.bindTooltip(
+                `<div>
+                     Dimapur, Nagaland: AQI 83
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_80ad26f34b463c7b1c88cc0770354876 = L.marker(
+                [26.304399999999998, 93.7271],
+                {
+}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+            var div_icon_681667a31e749d3cd8a240339c4dd620 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px;font-weight:bold;color:#F1C40F;white-space:nowrap;\"\u003eDimapur\u003c/div\u003e",
+  "iconSize": [150, 20],
+  "className": "empty",
+});
+        
+    
+                marker_80ad26f34b463c7b1c88cc0770354876.setIcon(div_icon_681667a31e749d3cd8a240339c4dd620);
+            
+    
+            var circle_marker_edd099b4260b8eae5b119f0c095ad663 = L.circleMarker(
+                [28.628, 77.241],
+                {"bubblingMouseEvents": true, "color": "#641E16", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#641E16", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 1.5}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+        var popup_2e5339818e26fa3b76d459668c0ae5fb = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_3a0b2656bcd95c5ceecd2523776d9c1f = $(`<div id="html_3a0b2656bcd95c5ceecd2523776d9c1f" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; width:220px; font-size:12px;">         <b style="font-size:13px;">ITO, Delhi</b><br>         <hr style="margin:4px 0;">         <b>Country:</b> India<br>         <b>Mean PM2.5:</b> 342.9 µg/m³             &nbsp;<span style="color:red">(22.9× WHO limit)</span><br>         <b>Mean AQI:</b> 319<br>         <b>WHO exceedance:</b> 100% of readings<br>         <b>Pollution Index:</b> 0.638     </div></div>`)[0];
+                popup_2e5339818e26fa3b76d459668c0ae5fb.setContent(html_3a0b2656bcd95c5ceecd2523776d9c1f);
+            
+        
+
+        circle_marker_edd099b4260b8eae5b119f0c095ad663.bindPopup(popup_2e5339818e26fa3b76d459668c0ae5fb)
+        ;
+
+        
+    
+    
+            circle_marker_edd099b4260b8eae5b119f0c095ad663.bindTooltip(
+                `<div>
+                     ITO, Delhi: AQI 319
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2726039e81d0b7d561607733b0aa24f6 = L.marker(
+                [29.028, 77.241],
+                {
+}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+            var div_icon_c062811351e1cb83f2d4cd3ea3b17f73 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px;font-weight:bold;color:#641E16;white-space:nowrap;\"\u003eITO\u003c/div\u003e",
+  "iconSize": [150, 20],
+  "className": "empty",
+});
+        
+    
+                marker_2726039e81d0b7d561607733b0aa24f6.setIcon(div_icon_c062811351e1cb83f2d4cd3ea3b17f73);
+            
+    
+            var circle_marker_38e82d60ea42c2ed6eb50b45d1846abc = L.circleMarker(
+                [28.4744, 77.504],
+                {"bubblingMouseEvents": true, "color": "#9B59B6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9B59B6", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 45.0696, "stroke": true, "weight": 1.5}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+        var popup_230bdbb2cf4963b0bef3fc89a30b324a = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_095c027ef8d3897519237055261f6994 = $(`<div id="html_095c027ef8d3897519237055261f6994" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; width:220px; font-size:12px;">         <b style="font-size:13px;">Knowledge park, Greater Noida</b><br>         <hr style="margin:4px 0;">         <b>Country:</b> India<br>         <b>Mean PM2.5:</b> 225.3 µg/m³             &nbsp;<span style="color:red">(15.0× WHO limit)</span><br>         <b>Mean AQI:</b> 218<br>         <b>WHO exceedance:</b> 100% of readings<br>         <b>Pollution Index:</b> 0.441     </div></div>`)[0];
+                popup_230bdbb2cf4963b0bef3fc89a30b324a.setContent(html_095c027ef8d3897519237055261f6994);
+            
+        
+
+        circle_marker_38e82d60ea42c2ed6eb50b45d1846abc.bindPopup(popup_230bdbb2cf4963b0bef3fc89a30b324a)
+        ;
+
+        
+    
+    
+            circle_marker_38e82d60ea42c2ed6eb50b45d1846abc.bindTooltip(
+                `<div>
+                     Knowledge park, Greater Noida: AQI 218
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1ceb1ceb94543d0903527590b3150b18 = L.marker(
+                [28.874399999999998, 77.504],
+                {
+}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+            var div_icon_285b816d1e3154cb1ea73f5c156c4faa = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px;font-weight:bold;color:#9B59B6;white-space:nowrap;\"\u003eKnowledge park\u003c/div\u003e",
+  "iconSize": [150, 20],
+  "className": "empty",
+});
+        
+    
+                marker_1ceb1ceb94543d0903527590b3150b18.setIcon(div_icon_285b816d1e3154cb1ea73f5c156c4faa);
+            
+    
+            var circle_marker_7bb9362f5bdbba36be21bcab094778a9 = L.circleMarker(
+                [19.076, 72.8777],
+                {"bubblingMouseEvents": true, "color": "#F39C12", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F39C12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 32.5058, "stroke": true, "weight": 1.5}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+        var popup_62737664bda4d2bf961622347102e4ea = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_0a3b9e031382c36abda4ddbdebd692cb = $(`<div id="html_0a3b9e031382c36abda4ddbdebd692cb" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; width:220px; font-size:12px;">         <b style="font-size:13px;">Mumbai</b><br>         <hr style="margin:4px 0;">         <b>Country:</b> India<br>         <b>Mean PM2.5:</b> 162.5 µg/m³             &nbsp;<span style="color:red">(10.8× WHO limit)</span><br>         <b>Mean AQI:</b> 146<br>         <b>WHO exceedance:</b> 96% of readings<br>         <b>Pollution Index:</b> 0.330     </div></div>`)[0];
+                popup_62737664bda4d2bf961622347102e4ea.setContent(html_0a3b9e031382c36abda4ddbdebd692cb);
+            
+        
+
+        circle_marker_7bb9362f5bdbba36be21bcab094778a9.bindPopup(popup_62737664bda4d2bf961622347102e4ea)
+        ;
+
+        
+    
+    
+            circle_marker_7bb9362f5bdbba36be21bcab094778a9.bindTooltip(
+                `<div>
+                     Mumbai: AQI 146
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2953423a779b394341ea0bcab04d3dd0 = L.marker(
+                [19.476, 72.8777],
+                {
+}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+            var div_icon_5632c5ffd87ebd9d4eea60b53e18ef13 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px;font-weight:bold;color:#F39C12;white-space:nowrap;\"\u003eMumbai\u003c/div\u003e",
+  "iconSize": [150, 20],
+  "className": "empty",
+});
+        
+    
+                marker_2953423a779b394341ea0bcab04d3dd0.setIcon(div_icon_5632c5ffd87ebd9d4eea60b53e18ef13);
+            
+    
+            var circle_marker_66d0874da25124b4dfdc68c721b1f308 = L.circleMarker(
+                [28.4089, 77.3178],
+                {"bubblingMouseEvents": true, "color": "#9B59B6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9B59B6", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 37.0, "stroke": true, "weight": 1.5}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+        var popup_1cc854af9d7c7f643edb70e3e46d7589 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_725f9eaee64cf8cb8bbec012a29c0e09 = $(`<div id="html_725f9eaee64cf8cb8bbec012a29c0e09" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; width:220px; font-size:12px;">         <b style="font-size:13px;">New Ind Town, Faridabad</b><br>         <hr style="margin:4px 0;">         <b>Country:</b> India<br>         <b>Mean PM2.5:</b> 185.0 µg/m³             &nbsp;<span style="color:red">(12.3× WHO limit)</span><br>         <b>Mean AQI:</b> 230<br>         <b>WHO exceedance:</b> 100% of readings<br>         <b>Pollution Index:</b> 0.378     </div></div>`)[0];
+                popup_1cc854af9d7c7f643edb70e3e46d7589.setContent(html_725f9eaee64cf8cb8bbec012a29c0e09);
+            
+        
+
+        circle_marker_66d0874da25124b4dfdc68c721b1f308.bindPopup(popup_1cc854af9d7c7f643edb70e3e46d7589)
+        ;
+
+        
+    
+    
+            circle_marker_66d0874da25124b4dfdc68c721b1f308.bindTooltip(
+                `<div>
+                     New Ind Town, Faridabad: AQI 230
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_413641af755c0cac232563fef799597d = L.marker(
+                [28.808899999999998, 77.3178],
+                {
+}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+            var div_icon_a1a273e028bf8296f233d1f3d83f6df9 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px;font-weight:bold;color:#9B59B6;white-space:nowrap;\"\u003eNew Ind Town\u003c/div\u003e",
+  "iconSize": [150, 20],
+  "className": "empty",
+});
+        
+    
+                marker_413641af755c0cac232563fef799597d.setIcon(div_icon_a1a273e028bf8296f233d1f3d83f6df9);
+            
+    
+            var circle_marker_f10f868c728c27b32262b1111653ac88 = L.circleMarker(
+                [13.0827, 80.2707],
+                {"bubblingMouseEvents": true, "color": "#F1C40F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F1C40F", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.93, "stroke": true, "weight": 1.5}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+        var popup_3c2228183033b3aff2b1a90ed227b2c5 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_2a8826db1009095571cf2d14bdf2d8fc = $(`<div id="html_2a8826db1009095571cf2d14bdf2d8fc" style="width: 100.0%; height: 100.0%;">     <div style="font-family:Arial; width:220px; font-size:12px;">         <b style="font-size:13px;">Tamil Nadu</b><br>         <hr style="margin:4px 0;">         <b>Country:</b> India<br>         <b>Mean PM2.5:</b> 54.6 µg/m³             &nbsp;<span style="color:red">(3.6× WHO limit)</span><br>         <b>Mean AQI:</b> 93<br>         <b>WHO exceedance:</b> 95% of readings<br>         <b>Pollution Index:</b> 0.176     </div></div>`)[0];
+                popup_3c2228183033b3aff2b1a90ed227b2c5.setContent(html_2a8826db1009095571cf2d14bdf2d8fc);
+            
+        
+
+        circle_marker_f10f868c728c27b32262b1111653ac88.bindPopup(popup_3c2228183033b3aff2b1a90ed227b2c5)
+        ;
+
+        
+    
+    
+            circle_marker_f10f868c728c27b32262b1111653ac88.bindTooltip(
+                `<div>
+                     Tamil Nadu: AQI 93
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_9505851c92a019f5acdae1e7aa245741 = L.marker(
+                [13.482700000000001, 80.2707],
+                {
+}
+            ).addTo(map_96ef02dee55268712660bc8c84236538);
+        
+    
+            var div_icon_edc1c4d7478ed4f2f90e85add7fa2c77 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px;font-weight:bold;color:#F1C40F;white-space:nowrap;\"\u003eTamil Nadu\u003c/div\u003e",
+  "iconSize": [150, 20],
+  "className": "empty",
+});
+        
+    
+                marker_9505851c92a019f5acdae1e7aa245741.setIcon(div_icon_edc1c4d7478ed4f2f90e85add7fa2c77);
+            
+</script>
+</html>
