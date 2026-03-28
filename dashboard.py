@@ -1,4 +1,4 @@
-# STREAMLIT DASHBOARD
+# STREAMLIT DASHBOARD FOR AQI
 
 import streamlit as st
 import pandas as pd

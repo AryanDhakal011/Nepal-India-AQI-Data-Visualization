@@ -6,7 +6,7 @@ import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 
-#loading cleaned datasets 
+#load cleaned datasets 
 df       = pd.read_csv('data/cleaned_aqi.csv', parse_dates=['Date'])
 readings = pd.read_csv('data/readings.csv',    parse_dates=['Date'])
 loc_sum  = pd.read_csv('data/location_summary.csv')

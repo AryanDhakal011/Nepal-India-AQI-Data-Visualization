@@ -140,10 +140,8 @@ plt.savefig('outputs/adv2_faceted_pm25.png', bbox_inches='tight', dpi=130)
 plt.close()
 print("    Saved: adv2_faceted_pm25.png")
 
-# GEOSPATIAL HEATMAP 
-
+# Geospatial HEATMAP 
 print("  [3/6] Geospatial visualization...")
-
 m = folium.Map(location=[22.5, 82.0], zoom_start=5,
                tiles='CartoDB positron')
 

@@ -1,3 +1,4 @@
+#run all tasks in sequence
 import subprocess, sys, os
 
 scripts = [
@@ -22,4 +23,4 @@ print('\n' + '='*60)
 print('All tasks complete. Output files in outputs/')
 print('='*60)
 print('\nTo launch the interactive dashboard:')
-print('  streamlit run dashboard.py')
+print('  streamlit run dashboard.py')    

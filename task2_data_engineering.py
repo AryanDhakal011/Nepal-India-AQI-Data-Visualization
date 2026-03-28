@@ -4,7 +4,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-#LOAD DATASETS
+#LOADING DATASET
 
 print("=" * 60)
 print("STEP 1: Loading datasets")
@@ -177,7 +177,6 @@ print(f"Unique readings: {len(readings)} (from {len(df):,} total rows)")
 print("Per location:\n", readings['Location'].value_counts().to_string())
 
 #RESHAPING & AGGREGATION
-
 
 print("\n" + "=" * 60)
 print("STEP 6: Reshaping & aggregation")
