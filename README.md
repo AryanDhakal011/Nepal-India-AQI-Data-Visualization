@@ -11,12 +11,14 @@ Compare pollution levels against WHO safety standards
 Identify seasonal and geographic patterns
 Build interactive and static visualizations
 Provide actionable insights for policymakers and stakeholders
+
 **📊 Key Insights**
 Over 97% of PM2.5 readings exceed WHO safe limits
 Cities like Delhi show pollution levels up to 23× higher than safe thresholds
 Northern Indian cities exhibit extreme and volatile pollution spikes
 Nepal (Biratnagar) shows consistent long-term exposure rather than spikes
 Pollution peaks significantly during winter seasons
+
 **🛠️ Tech Stack**
 Python
 Pandas – Data manipulation & cleaning
@@ -25,22 +27,27 @@ Matplotlib & Seaborn – Statistical visualizations
 Plotly – Interactive charts
 Streamlit – Dashboard development
 Folium – Geospatial mapping
+
 **⚙️ Features**
+
 **🔍 Data Engineering**
 Data cleaning (missing values, outliers, duplicates)
 Feature engineering (AQI categories, seasonal classification, pollution index)
 Dataset integration across multiple cities
+
 **📈 Exploratory Data Analysis (EDA)**
 PM2.5 comparison across cities
 AQI distribution analysis
 Correlation heatmaps
 Time-series trend analysis
 Seasonal heatmaps
+
 **📊 Advanced Visualizations**
 Interactive Streamlit dashboard
 Geospatial pollution map
 Scenario-based comparisons
 Multi-layer and faceted charts
+
 **🧪 Dataset**
 Combined dataset from Nepal and India
 Includes:
