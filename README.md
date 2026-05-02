@@ -52,7 +52,17 @@ The analysis is based on 12,240 air quality observations across 8 cities, focusi
 5. Set the app file path to `dashboard.py`.
 6. Click **Deploy**.
 
-Streamlit Cloud will install dependencies from `requirements.txt` automatically.
+Streamlit Cloud will install dependencies from `requirements.txt`, and it will also install system packages from `packages.txt`.
+
+## Fix for the current build failure
+If deployment gets stuck while installing `pandas` or `streamlit`, stop the app and redeploy after these changes.
+
+The build error was caused by `pillow` needing zlib/JPEG system headers. `packages.txt` now installs:
+- `zlib1g-dev`
+- `libjpeg-dev`
+- `libpng-dev`
+
+These are required when Streamlit Cloud installs `pillow` as a dependency of `streamlit`.
 
 ## Notes
 - The dashboard loads data from `data/cleaned_aqi.csv`, `data/readings.csv`, and `data/location_summary.csv`.
