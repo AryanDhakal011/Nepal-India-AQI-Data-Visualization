@@ -49,7 +49,7 @@ The analysis is based on 12,240 air quality observations across 8 cities, focusi
 2. Open https://share.streamlit.io and sign in with GitHub.
 3. Click **New app**.
 4. Select this repository and choose `main` (or your branch) as the branch.
-5. Set the app file path to `dashboard.py`.
+5. Set the app file path to `streamlit_app.py`.
 6. Click **Deploy**.
 
 Streamlit Cloud will install dependencies from `requirements.txt`, and it will also install system packages from `packages.txt`.
@@ -62,12 +62,14 @@ If deployment gets stuck while installing `pandas` or `streamlit`, stop the app 
 
 The build error was caused by `pillow` needing zlib/JPEG system headers. `packages.txt` now installs:
 - `build-essential`
-- `python3.11-dev`
+- `python3-dev`
 - `zlib1g-dev`
 - `libjpeg-dev`
 - `libpng-dev`
-- `libatlas-base-dev`
 - `gfortran`
+- `libopenblas-dev`
+- `liblapack-dev`
+- `pkg-config`
 - `libopenblas-dev`
 - `liblapack-dev`
 
