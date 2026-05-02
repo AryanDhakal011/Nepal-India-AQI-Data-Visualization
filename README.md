@@ -54,6 +54,9 @@ The analysis is based on 12,240 air quality observations across 8 cities, focusi
 
 Streamlit Cloud will install dependencies from `requirements.txt`, and it will also install system packages from `packages.txt`.
 
+## Runtime pin
+A `runtime.txt` file has been added to force Streamlit Cloud to use Python 3.11.18 instead of the default Python 3.14 environment.
+
 ## Fix for the current build failure
 If deployment gets stuck while installing `pandas` or `streamlit`, stop the app and redeploy after these changes.
 
