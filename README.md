@@ -61,11 +61,23 @@ A `runtime.txt` file has been added to force Streamlit Cloud to use Python 3.11.
 If deployment gets stuck while installing `pandas` or `streamlit`, stop the app and redeploy after these changes.
 
 The build error was caused by `pillow` needing zlib/JPEG system headers. `packages.txt` now installs:
+- `build-essential`
+- `python3.11-dev`
 - `zlib1g-dev`
 - `libjpeg-dev`
 - `libpng-dev`
+- `libatlas-base-dev`
+- `gfortran`
+- `libopenblas-dev`
+- `liblapack-dev`
 
-These are required when Streamlit Cloud installs `pillow` as a dependency of `streamlit`.
+These packages ensure the Streamlit Cloud build environment can compile any dependencies that need native extensions during install.
+
+## Redeploy after changes
+1. Stop the current app deployment on Streamlit Cloud.
+2. Refresh the app page.
+3. Click **Deploy** again.
+4. Wait for the build logs to finish and the app to launch.
 
 ## Notes
 - The dashboard loads data from `data/cleaned_aqi.csv`, `data/readings.csv`, and `data/location_summary.csv`.
