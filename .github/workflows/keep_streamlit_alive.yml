@@ -1,0 +1,22 @@
+name: Keep Streamlit app alive
+
+on:
+  schedule:
+    - cron: '0 */4 * * *' # every 4 hours
+  workflow_dispatch: {}
+
+jobs:
+  ping-streamlit:
+    name: Ping Streamlit app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping deployed app URL
+        run: |
+          URL="https://nepal-india-aqi-data-visualization-kceb4ajfqtgky5xxnvqm6p.streamlit.app"
+          echo "Pinging $URL"
+          http_code=$(curl -o /dev/null -s -w '%{http_code}' "$URL")
+          echo "HTTP status: $http_code"
+          if [ "$http_code" != "200" ]; then
+            echo "WARNING: App did not return 200"
+            exit 1
+          fi

@@ -49,10 +49,16 @@ The analysis is based on 12,240 air quality observations across 8 cities, focusi
 2. Open https://share.streamlit.io and sign in with GitHub.
 3. Click **New app**.
 4. Select this repository and choose `main` (or your branch) as the branch.
-5. Set the app file path to `streamlit_app.py`.
+5. Set the app file path to `dashboard.py`.
 6. Click **Deploy**.
 
 Streamlit Cloud will install dependencies from `requirements.txt`, and it will also install system packages from `packages.txt`.
+
+## Keep the app active
+A GitHub Actions workflow is included at `.github/workflows/keep_streamlit_alive.yml`.
+It pings the deployed app every 4 hours to help keep the Streamlit instance warm.
+
+If your Streamlit URL changes, update the `URL` value in `.github/workflows/keep_streamlit_alive.yml`.
 
 ## Runtime pin
 A `runtime.txt` file has been added to force Streamlit Cloud to use Python 3.11.18 instead of the default Python 3.14 environment.
